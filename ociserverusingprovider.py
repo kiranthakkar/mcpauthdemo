@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 import oci
 from oci.auth.signers import TokenExchangeSigner
+from ociprovider import OCIProvider
 
 from starlette.responses import PlainTextResponse
 from starlette.requests import Request
@@ -29,14 +30,14 @@ IAM_GUID = os.getenv("IAM_GUID")
 IAM_TOKENEXCHANGE_CLIENT_ID = os.getenv("IAM_TOKENEXCHANGE_CLIENT_ID")
 IAM_TOKENEXCHANGE_CLIENT_SECRET = os.getenv("IAM_TOKENEXCHANGE_CLIENT_SECRET")
 
-auth = OIDCProxy(
+auth = OCIProvider(
     config_url= f"https://{IAM_DOMAIN}/.well-known/openid-configuration",
     client_id=IAM_CLIENT_ID,
     client_secret=IAM_CLIENT_SECRET,
     base_url="http://localhost:8000",
     required_scopes=["openid", "profile", "email"],
-    require_authorization_consent=False,
 )
+
 mcp = FastMCP("My MCP Server", auth=auth)
 
 def get_oci_signer(token: str, tokenID: str) -> TokenExchangeSigner:

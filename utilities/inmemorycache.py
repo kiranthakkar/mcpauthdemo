@@ -1,7 +1,7 @@
 from fastmcp.server.context import Context
 from oci.auth.signers import TokenExchangeSigner
 
-class InMemoryCache:
+class InMemoryContextCache:
     def __init__(self):
         self.cache = {}
         
