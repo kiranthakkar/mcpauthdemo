@@ -77,7 +77,7 @@ def get_os_namespace(region: str, ctx: Context) -> str:
     tokenID = token.claims.get("jti")
     ac_token = token.token
     signer = get_oci_signer(ac_token, tokenID)
-    object_storage_client = ociprovider.object_storage.ObjectStorageClient(config={'region': region}, signer=signer)
+    object_storage_client = oci.object_storage.ObjectStorageClient(config={'region': region}, signer=signer)
 
     # Get the namespace using Object Storage Client
     namespace_response = object_storage_client.get_namespace()
