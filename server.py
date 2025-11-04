@@ -35,7 +35,7 @@ auth = OIDCProxy(
     client_secret=IAM_CLIENT_SECRET,
     base_url="http://localhost:8000",
     required_scopes=["openid", "profile", "email"],
-    require_authorization_consent=False,
+    #require_authorization_consent=False,
 )
 mcp = FastMCP("My MCP Server", auth=auth)
 
