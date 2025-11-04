@@ -34,6 +34,20 @@ Follow the steps as mentioned below to create an OAuth client.
 
 This is all you need to implement MCP server authentication against OCI IAM. However, if you want to use authenticated user token to invoke OCI control plane APIs and propagate identity to the OCI control plane instead of using a service user account, then you need to implement token exchange.
 
+## Make sure JWK's URL are made accessible without client credentials
+
+1. Login to OCI console (https://cloud.oracle.com for OCI commercial cloud).
+2. From "Identity & Security" menu, open Domains page.
+3. On the Domains list page, select the domain that you are using for MCP Authentication.
+4. Open Settings tab. 
+5. Click on "Edit Domain Settings" button.
+
+![alt text](editdomainsettingsbutton.png)
+
+6. Enable "Configure client access" checkbox as show in the screenshot.
+
+![alt text](editdomainsettings.png)
+
 ## Token Exchange Setup
 Token exchange helps you exchange logged in user's OCI IAM token for OCI control plane session token aka. UPST. To learn more about token exchange, refer to my [Workload Identity Federation Blog.](https://www.ateam-oracle.com/post/workload-identity-federation)
 
