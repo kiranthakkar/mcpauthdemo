@@ -21,7 +21,7 @@ Follow the steps as mentioned below to create an OAuth client.
 9. Once the Integrated Application is created, Click on "OAuth configuration" tab.
 10. Click on "Edit OAuth configuration" button.
 11. Configure the application as OAuth client by selecting "Configure this application as a client now" radio button.
-12. Select "Authorization code" grant type. If you are planning to use the same OAuth client application for token exchange then select "Client credentials" grant type as well. 
+12. Select "Authorization code" grant type. If you are planning to use the same OAuth client application for token exchange then select "Client credentials" grant type as well. In the sample, we will use the same client.
 13. For Authorization grant type, select redirect URL. This is, in most cases, will be MCP server URL followed by "/oauth/callback".
 
 ![alt text](oauthconfiguration.png)
@@ -47,7 +47,7 @@ oci identity-domains identity-propagation-trust create \
 --name "For Token Exchange" --type "JWT" \
 --issuer "https://identity.oraclecloud.com/" \
 --endpoint "https://{IAM_GUID}}.identity.oraclecloud.com" \
---subject-claim-name "sub" \
+--subject-claim-name "sub" --allow-impersonation false \
 --subject-mapping-attribute "username" \
 --subject-type "User" --client-claim-name "iss" \
 --client-claim-values '["https://identity.oraclecloud.com/"]' \
